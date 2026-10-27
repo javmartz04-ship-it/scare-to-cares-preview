@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Checkout | Scare to Cares Digital Book + Workbook</title>
+<meta name="description" content="Secure checkout for the Scare to Cares digital book and guided workbook by Saby Waraich. $27, instant access, 30-day money-back guarantee.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#faf8f4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23120C38%22/%3E%3Cpath d=%22M7 21h17m-4-4 4 4-4 4%22 stroke=%22%23AF4CF0%22 stroke-width=%222.6%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Jost:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Scare to Cares checkout, v1 (2026-10-27). Same tokens as the sales page (../index.html).
+   The form styles target GHL's real order-form classes (.c-order, .form-input, .product-detail, .payment-title-wrapp,
+   .coupon-container, .card-el-error-msg, .order-form-footer), read from the live checkout's DOM. Inside GHL the script
+   at the bottom moves the native order form into #order-slot, so the real form takes this look. On the preview a
+   stand-in with the same classes shows where it lands. */
+#stc{
+  --canvas:#faf8f4; --hair:#e8e3d8; --ink:#120c38; --body:#3e3858; --muted:#574f70; --faint:#8a83a0;
+  --accent:#af4cf0; --accent-text:#8e2fd6; --accent-glow:rgba(175,76,240,.42); --accent-tint:rgba(175,76,240,.08);
+  --navy:#18143e; --on-navy-em:#c38ef9;
+  --lit-paper:radial-gradient(122% 78% at 50% -14%,#fff,#fcfbf8 40%,#f6f2ea);
+  --lit-navy:radial-gradient(104% 78% at 14% -10%,#2a1f6b,#1a1250 34%,#18143e 66%,#0b0824);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --display:"Jost",system-ui,sans-serif; --sans:"Inter",system-ui,sans-serif; --mark:"Bebas Neue","Jost",sans-serif;
+  --r:20px; --r-pill:999px;
+  position:relative;min-height:100vh;background:var(--lit-paper);color:var(--body);font:400 16.5px/1.6 var(--sans);-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums;text-align:left
+}
+#stc *,#stc *::before,#stc *::after{box-sizing:border-box}
+#stc :where(h1,h2,h3,p,ul,ol,figure,blockquote){margin:0;padding:0}
+#stc img{display:block;max-width:100%;height:auto}
+#stc::before{content:"";position:absolute;inset:0 0 auto;height:900px;pointer-events:none;
+  background:radial-gradient(38% 46% at 12% 30%,rgba(175,76,240,.09),transparent 70%),radial-gradient(34% 40% at 90% 10%,rgba(26,18,80,.06),transparent 70%)}
+#stc > *{position:relative}
+#stc .wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+#stc :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+
+/* top plate: logo + secure, no links */
+#stc .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0}
+#stc .logo{display:inline-grid;place-items:center;padding:10px 16px;border-radius:12px;background:var(--navy)}
+#stc .logo img{width:118px}
+#stc .secure{display:inline-flex;align-items:center;gap:8px;font:600 12px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+#stc .secure svg{width:15px;height:15px;stroke:var(--accent-text);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* layout */
+#stc .grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:start;padding:28px 0 96px}
+#stc .eyebrow{display:inline-flex;align-items:center;gap:12px;font:600 12px/1.2 var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
+#stc .eyebrow::before{content:"";flex:none;width:22px;height:3px;border-radius:3px;background:var(--accent)}
+#stc h1{margin-top:16px;font:600 clamp(32px,3.6vw,48px)/1.07 var(--display);letter-spacing:-.025em;color:var(--ink);text-wrap:balance}
+#stc h1 .em{display:block;color:var(--accent-text)}
+#stc .lede{margin-top:14px;max-width:52ch;font-size:17px}
+#stc .steps{display:flex;align-items:center;gap:10px;margin-top:26px;list-style:none;font:600 13px/1 var(--sans);color:var(--faint)}
+#stc .steps li{display:flex;align-items:center;gap:8px}
+#stc .steps i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--hair);font:600 11.5px/1 var(--sans);font-style:normal}
+#stc .steps .done{color:var(--muted)}
+#stc .steps .done i{border-color:var(--accent);background:var(--accent);color:#fff}
+#stc .steps .now{color:var(--ink)}
+#stc .steps .now i{border-color:var(--ink);color:var(--ink)}
+#stc .steps .bar{width:28px;height:1.5px;background:var(--hair)}
+
+/* double-bezel form card */
+#stc .card{margin-top:22px;padding:10px;border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(243,238,229,.8));border:1px solid rgba(18,12,56,.07);
+  box-shadow:0 44px 96px -46px rgba(18,12,56,.42),inset 0 1px 0 #fff}
+#stc .card-core{padding:30px 30px 24px;border-radius:21px;background:#fff;box-shadow:inset 0 0 0 1px rgba(18,12,56,.06)}
+#stc .card-k{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;font:600 12px/1 var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--ink)}
+#stc .card-k span{display:inline-flex;align-items:center;gap:6px;font-weight:500;letter-spacing:.04em;text-transform:none;font-size:13px;color:var(--muted)}
+#stc .card-k svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== GHL order form restyle (real classes) ===== */
+#stc .c-order{width:100%!important;margin:0!important;padding:0!important;background:none!important;box-shadow:none!important;border:0!important}
+#stc .c-order .container-order-form-two-step,#stc .c-order .form-body,#stc .c-order [id^="div-cone-step"]{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;background:none!important;box-shadow:none!important;border:0!important}
+#stc .c-order .form-step{display:none!important}
+#stc .c-order section.info{display:grid!important;gap:12px!important;margin:0!important;padding:0!important}
+#stc .c-order .form-input{display:block!important;width:100%!important;height:54px!important;margin:0!important;padding:0 18px!important;border:1px solid #ddd6e6!important;border-radius:14px!important;
+  background:#fbfaf7!important;font:500 16px/1 var(--sans)!important;color:var(--ink)!important;box-shadow:none!important;transition:border-color .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease)}
+#stc .c-order .form-input::placeholder{color:#8a83a0!important;opacity:1}
+#stc .c-order .form-input:focus{outline:none!important;border-color:var(--accent)!important;background:#fff!important;box-shadow:0 0 0 4px rgba(175,76,240,.14)!important}
+#stc .c-order .payment-title-wrapp{display:flex!important;align-items:center!important;gap:14px!important;margin:26px 0 14px!important}
+#stc .c-order .payment-title{font:600 12px/1 var(--sans)!important;letter-spacing:.17em!important;text-transform:uppercase!important;color:var(--ink)!important}
+#stc .c-order .payment-bar{flex:1!important;height:1px!important;background:var(--hair)!important;border:0!important}
+#stc .c-order .form-payment{margin:0!important;padding:0!important}
+#stc .c-order .product-detail{margin:0 0 14px!important;padding:14px 16px!important;border-radius:14px!important;background:var(--canvas)!important;border:1px solid var(--hair)!important;font:500 15px/1.4 var(--sans)!important;color:var(--ink)!important}
+#stc .c-order .product-title{display:grid!important;grid-template-columns:minmax(0,1fr) 96px 64px!important;white-space:nowrap!important;font:600 11px/1 var(--sans)!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--faint)!important;padding-bottom:10px!important}
+#stc .c-order .product-title .item:last-child{text-align:right!important}
+#stc .c-order .divider-product{height:1px!important;background:var(--hair)!important;margin:0 0 10px!important;border:0!important}
+#stc .c-order .coupon-container{margin:0 0 14px!important}
+#stc .c-order .coupon-text-container{display:flex!important;gap:8px!important;width:100%!important}
+#stc .c-order .coupon-input{height:46px!important;font-size:14.5px!important}
+#stc .c-order .apply-btn{flex:none!important;height:46px!important;padding:0 20px!important;border-radius:12px!important;border:1px solid var(--hair)!important;background:#fff!important;font:600 14.5px/1 var(--sans)!important;color:var(--ink)!important;cursor:pointer}
+#stc .c-order .apply-btn:disabled{opacity:.55;cursor:default}
+#stc .c-order .payment-content{margin:0!important}
+#stc .c-order .card-el-error-msg{font:500 14px/1.4 var(--sans)!important;color:#b42318!important;margin-top:8px!important}
+#stc .c-order button[type="submit"],#stc .c-order .form-btn,#stc .c-order .btn-submit{display:flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;width:100%!important;min-height:64px!important;margin:18px 0 0!important;padding:0 24px!important;border:0!important;border-radius:var(--r-pill)!important;
+  background:linear-gradient(100deg,#b65af2,#8e2fd6)!important;color:#fff!important;font:700 18px/1.2 var(--sans)!important;letter-spacing:-.01em!important;cursor:pointer;
+  box-shadow:0 16px 36px -12px var(--accent-glow),inset 0 1px 0 rgba(255,255,255,.26)!important;transition:transform .5s var(--ease),filter .3s var(--ease)}
+#stc .c-order button[type="submit"]:hover,#stc .c-order .form-btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+#stc .c-order .order-form-footer{display:flex!important;justify-content:center!important;margin-top:14px!important;font:500 13px/1 var(--sans)!important;color:var(--faint)!important}
+
+/* preview stand-in only: rows the live form draws once a product and card processor are attached */
+#stc .sb-row{display:grid;grid-template-columns:minmax(0,1fr) 96px 64px;align-items:center}
+#stc .sb-row span:nth-child(2){text-align:center}
+#stc .sb-row span:last-child{text-align:right;font-weight:600}
+#stc .sb-card{display:grid;grid-template-columns:minmax(0,1fr) 110px 84px;gap:8px}
+#stc .sb-card span{white-space:nowrap}
+#stc .sb-card .form-input{display:flex!important;align-items:center;gap:10px}
+#stc .sb-card svg{flex:none;width:22px;height:16px}
+#stc .note{display:none;margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--accent-tint);font-size:14px;color:var(--ink)}
+#stc .note.show{display:block}
+
+#stc .risk{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:18px;font-size:14px;color:var(--muted)}
+#stc .risk span{display:inline-flex;align-items:center;gap:7px}
+#stc .risk span::before{content:"";width:15px;height:15px;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238E2FD6' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* ===== right: order summary ===== */
+#stc .summary{position:relative;margin-top:6px;border-radius:26px;background:var(--lit-navy);color:rgba(255,255,255,.76);overflow:hidden;
+  box-shadow:0 44px 90px -40px rgba(26,18,80,.7),inset 0 1px 0 rgba(255,255,255,.12)}
+#stc .summary::before{content:"";position:absolute;right:-20%;top:-20%;width:80%;height:70%;pointer-events:none;background:radial-gradient(closest-side,rgba(175,76,240,.28),transparent 70%)}
+#stc .sum-head{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:center;padding:30px 30px 24px}
+#stc .sum-head img{transform:rotate(-3deg);filter:drop-shadow(0 18px 24px rgba(0,0,0,.4))}
+#stc .sum-head .k{font:600 11.5px/1 var(--sans);letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+#stc .sum-head h2{margin-top:8px;font:600 23px/1.18 var(--display);letter-spacing:-.015em;color:#fff}
+#stc .sum-head p{margin-top:6px;font-size:14px;color:rgba(255,255,255,.66)}
+#stc .lines{position:relative;list-style:none;margin:0 30px;border-top:1px solid rgba(255,255,255,.12)}
+#stc .lines li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:12px;align-items:start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:15px;line-height:1.45}
+#stc .lines li::before{content:"";width:22px;height:22px;border-radius:50%;background:rgba(195,142,249,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C38EF9' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+#stc .lines b{display:block;color:#fff;font-weight:600}
+#stc .lines .v{font-size:14px;color:rgba(255,255,255,.55);white-space:nowrap}
+#stc .total{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:22px 30px 28px}
+#stc .total .k{font:600 12px/1.5 var(--sans);letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+#stc .total .k s{display:block;text-decoration:none;letter-spacing:.02em;text-transform:none;color:rgba(255,255,255,.45);font-weight:500;font-size:14px}
+#stc .total .amt{display:flex;align-items:flex-start;gap:3px;color:#fff}
+#stc .total .amt sup{font:600 22px/1 var(--display);margin-top:9px}
+#stc .total .amt b{font:400 76px/.85 var(--mark);letter-spacing:.01em}
+
+#stc .seal{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;align-items:center;margin-top:16px;padding:22px 24px;border-radius:var(--r);background:#fff;border:1px solid var(--hair)}
+#stc .seal svg{width:64px;height:64px}
+#stc .seal h3{font:600 17.5px/1.25 var(--display);color:var(--ink);letter-spacing:-.01em}
+#stc .seal p{margin-top:4px;font-size:14.5px;line-height:1.5}
+#stc .next{margin-top:16px;padding:22px 24px;border-radius:var(--r);border:1px solid var(--hair)}
+#stc .next .k{font:600 12px/1 var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--ink)}
+#stc .next ol{list-style:none;display:grid;gap:12px;margin-top:16px}
+#stc .next li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:6px;font-size:15px;line-height:1.5}
+#stc .next .n{font:600 13.5px/1.6 var(--sans);color:var(--accent-text);letter-spacing:.06em}
+#stc .next b{color:var(--ink);font-weight:600}
+#stc .quote{margin-top:16px;padding:22px 24px;border-radius:var(--r);background:#fff;border:1px solid var(--hair)}
+#stc .quote blockquote{font:500 16px/1.5 var(--display);color:var(--ink)}
+#stc .quote figcaption{margin-top:10px;font-size:13.5px;color:var(--muted)}
+#stc .quote figcaption b{color:var(--ink);font-weight:600}
+
+#stc .foot{padding:26px 0 34px;border-top:1px solid var(--hair)}
+#stc .foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;font-size:12.5px;color:var(--faint)}
+#stc .foot .legal{display:flex;gap:16px}
+
+/* reveal */
+#stc .rv{opacity:0;transform:translateY(16px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+#stc .rv.in{opacity:1;transform:none}
+#stc .d2{transition-delay:.1s}#stc .d3{transition-delay:.2s}
+
+@media (max-width:900px){
+  #stc .grid{grid-template-columns:minmax(0,1fr);gap:28px;padding-bottom:72px}
+  #stc .side{display:contents}
+  #stc .summary{order:-1;margin-top:0}
+  #stc .main{order:0}
+  #stc .after{order:1}
+}
+@media (max-width:640px){
+  #stc{font-size:16px}
+  #stc .wrap{width:min(100% - 32px,1120px)}
+  #stc .top{padding:14px 0}
+  #stc .logo{padding:8px 12px}
+  #stc .logo img{width:96px}
+  #stc .secure{font-size:10.5px;letter-spacing:.12em}
+  #stc .grid{padding-top:10px}
+  #stc h1{font-size:clamp(28px,7.6vw,34px)}
+  #stc .card-core{padding:22px 18px 20px}
+  #stc .sum-head{grid-template-columns:84px minmax(0,1fr);gap:14px;padding:20px 20px 16px}
+  #stc .sum-head h2{font-size:18.5px}
+  #stc .sum-head p{display:none}
+  #stc .lines{margin:0 20px}
+  #stc .lines li{padding:11px 0;font-size:14px}
+  #stc .lines li span{font-size:13.5px}
+  #stc .total{padding:16px 20px 20px}
+  #stc .total .amt b{font-size:60px}
+  #stc .sb-card{grid-template-columns:1fr 1fr}
+  #stc .sb-card > :first-child{grid-column:1 / -1}
+  #stc .steps{font-size:12px;gap:7px}
+  #stc .steps .bar{width:14px}
+  #stc .lines li span:not(.v){font-size:0}
+  #stc .lines li span b{font-size:14.5px;margin:0}
+  #stc .sb-card .form-input{padding:0 12px!important;font-size:14.5px!important}
+  #stc .foot .wrap{justify-content:center;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  #stc *,#stc *::before,#stc *::after{transition-duration:.01ms!important;transition-delay:0s!important}
+  #stc .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body style="margin:0">
+<div id="stc">
+  <header class="top wrap">
+    <span class="logo"><img src="../assets/logo.webp" width="900" height="234" alt="Scare to Cares by Saby Waraich"></span>
+    <span class="secure"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Secure checkout</span>
+  </header>
+
+  <div class="wrap grid">
+    <div class="main">
+      <div class="rv">
+        <p class="eyebrow">Last step</p>
+        <h1>Complete your order.<span class="em">Start reading in minutes.</span></h1>
+        <p class="lede">Enter your name and email, then your card. Your book and workbook are available right after purchase.</p>
+        <ol class="steps" aria-label="Checkout progress">
+          <li class="done"><i>&#10003;</i>Book + workbook</li><li class="bar" aria-hidden="true"></li>
+          <li class="now"><i>2</i>Payment</li><li class="bar" aria-hidden="true"></li>
+          <li><i>3</i>Instant access</li>
+        </ol>
+      </div>
+
+      <div class="card rv d2">
+        <div class="card-core">
+          <p class="card-k">Your details<span><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Encrypted</span></p>
+          <div id="order-slot">
+            <!-- Preview stand-in. Same classes as GHL's one-step order form; replaced by the real form inside GHL. -->
+            <div class="c-order" id="stand-in">
+              <div class="container-order-form-two-step"><div class="form-body"><div id="div-cone-step-preview">
+                <section class="info">
+                  <label class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" for="sb-name">Full name</label>
+                  <input id="sb-name" type="text" name="name" placeholder="Full Name..." class="form-input input" autocomplete="name">
+                  <label style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" for="sb-email">Email address</label>
+                  <input id="sb-email" type="email" name="email" placeholder="Email Address..." class="form-input input" autocomplete="email">
+                </section>
+                <div class="payment-title-wrapp"><div class="payment-title">Payment</div><div class="payment-bar"></div></div>
+                <form class="form-payment order-form-v2" onsubmit="return false">
+                  <section class="product-detail">
+                    <div class="product-title"><span class="item">Item</span><span class="item" style="text-align:center">Qty</span><span class="item">Price</span></div>
+                    <div class="divider-product"></div>
+                    <div class="sb-row"><span>Scare to Cares Digital Book + Workbook</span><span>1</span><span>$27.00</span></div>
+                  </section>
+                  <div class="sb-card" aria-hidden="true">
+                    <div class="form-input"><svg viewBox="0 0 22 16" fill="none"><rect x=".75" y=".75" width="20.5" height="14.5" rx="2.5" stroke="#8a83a0" stroke-width="1.5"/><path d="M1 5h20" stroke="#8a83a0" stroke-width="1.5"/></svg><span style="color:#8a83a0">Card number</span></div>
+                    <div class="form-input"><span style="color:#8a83a0">MM / YY</span></div>
+                    <div class="form-input"><span style="color:#8a83a0">CVC</span></div>
+                  </div>
+                  <div class="coupon-container" style="margin-top:12px!important"><div class="coupon-text-container"><input type="text" name="coupon_code" placeholder="Enter coupon code" class="form-input text-box coupon-input" aria-label="Coupon code"><button class="apply-btn apply-coupon-btn" type="button" disabled>Apply</button></div></div>
+                  <button type="submit" class="form-btn" id="sb-submit">Complete My Order: $27<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                  <p class="note" id="sb-note" role="status">Preview only. The live checkout runs on GoHighLevel's secure order form, which takes the card.</p>
+                  <section class="order-form-footer"><span>Secure Payment Processing</span></section>
+                </form>
+              </div></div></div>
+            </div>
+          </div>
+          <p class="risk"><span>Instant digital access</span><span>30-day money-back guarantee</span></p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="summary rv d2" aria-label="Order summary">
+        <div class="sum-head">
+          <img src="../assets/book-workbook.webp" width="1100" height="1205" alt="The Scare to Cares digital book and workbook">
+          <div>
+            <p class="k">Your order</p>
+            <h2>Scare to Cares Digital Book + Workbook</h2>
+            <p>by Saby Waraich</p>
+          </div>
+        </div>
+        <ul class="lines">
+          <li><span><b>Scare to Cares, the digital book</b>The 5 leadership shifts, SCARE to CARES</span><span class="v">$24 value</span></li>
+          <li><span><b>The guided fill-in workbook</b>Pattern, trigger, cost, CARES starting point</span><span class="v">$27 value</span></li>
+          <li><span><b>Instant digital access</b>Available right after purchase</span><span class="v">Included</span></li>
+        </ul>
+        <div class="total">
+          <p class="k">Due today<s>Total value <del>$51</del></s></p>
+          <p class="amt" aria-label="27 dollars"><sup>$</sup><b>27</b></p>
+        </div>
+      </div>
+
+      <div class="after">
+        <div class="seal rv d3">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="57" fill="#fff" stroke="#AF4CF0" stroke-width="4"/><circle cx="60" cy="60" r="47" fill="none" stroke="#AF4CF0" stroke-width="1.5" stroke-dasharray="3 4"/><text x="60" y="66" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="44" fill="#120C38">30</text><text x="60" y="86" text-anchor="middle" font-family="Jost, sans-serif" font-size="11" letter-spacing="2" fill="#574F70">DAYS</text></svg>
+          <div>
+            <h3>Read it. Do the workbook. Then decide.</h3>
+            <p>If it doesn't help you see the pattern affecting your project, ask for a refund within 30 days for the full $27.</p>
+          </div>
+        </div>
+        <div class="next rv d3">
+          <p class="k">What happens after you click</p>
+          <ol>
+            <li><span class="n">01</span><span><b>Instant access</b> to the digital book and the workbook.</span></li>
+            <li><span class="n">02</span><span><b>Find your SCARE pattern</b> with the diagnostic in the workbook.</span></li>
+            <li><span class="n">03</span><span><b>Pick your first CARES shift</b> and apply it to the project on your desk.</span></li>
+          </ol>
+        </div>
+        <figure class="quote rv d3">
+          <blockquote>"Saby has a way of making complex ideas simple and actionable. He leaves people feeling more capable and motivated."</blockquote>
+          <figcaption><b>City of Seattle IT</b>, Seattle Municipal Tower</figcaption>
+        </figure>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>&copy; 2026 Saby Waraich. All rights reserved. By purchasing, you agree to the Terms &amp; Conditions.</span>
+      <span class="legal"><span>Terms &amp; Conditions</span><span>Privacy Policy</span><span>Refund Policy</span></span>
+    </div>
+  </footer>
+</div>
+<script>
+(() => {
+  const root = document.getElementById('stc');
+  // Inside GoHighLevel: move the page's real order form into the slot (the visible one if GHL rendered a desktop and a mobile copy).
+  const mount = () => {
+    const forms = [...document.querySelectorAll('.c-order')].filter(f => !root.contains(f));
+    if (!forms.length) return false;
+    const real = forms.find(f => f.offsetParent !== null) || forms[0];
+    const slot = document.getElementById('order-slot');
+    slot.textContent = ''; slot.appendChild(real);
+    document.body.classList.add('stc-live');
+    return true;
+  };
+  if (!mount()) { let n = 0; const t = setInterval(() => { if (mount() || ++n > 40) clearInterval(t); }, 250); }
+
+  // Preview stand-in: never takes a card.
+  const sb = document.getElementById('sb-submit');
+  if (sb) sb.addEventListener('click', e => { e.preventDefault(); document.getElementById('sb-note').classList.add('show'); });
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .1 });
+  root.querySelectorAll('.rv').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
