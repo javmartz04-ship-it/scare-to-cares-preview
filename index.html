@@ -206,29 +206,41 @@ section{position:relative}
 .know .n{font:600 14.5px/1.6 var(--sans);color:var(--accent-text);letter-spacing:.06em}
 .know b{color:var(--ink);font-weight:600}
 
-/* ============ 06 AUTHOR ============ */
-.author{background:var(--lit-cream);padding:136px 0 120px}
-.au-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:center}
-.portrait{position:relative;width:min(540px,100%);justify-self:center}
-.portrait .card{padding:10px}
-.portrait .card-core{padding:0;overflow:hidden;aspect-ratio:435/493;background:#1a1250}
-.portrait img{width:100%;height:100%;object-fit:cover}
-.portrait .stamp{position:absolute;right:-22px;bottom:40px;padding:18px 22px;border-radius:16px;background:var(--ink);color:#fff;box-shadow:0 24px 50px -20px rgba(18,12,56,.6)}
-.portrait .stamp b{display:block;font:400 42px/1 var(--mark);color:var(--on-navy-em);letter-spacing:.02em}
-.portrait .stamp span{font-size:12.5px;color:rgba(255,255,255,.75)}
-.au-copy h2{font-size:clamp(38px,4.8vw,68px)}
-.au-copy p{margin-top:20px;font-size:19px;line-height:1.65}
+/* ============ 06 AUTHOR: the chapter that sells the book ============ */
+.author{padding:150px 0 130px;background:var(--lit-cream);overflow:hidden}
+.author::before{content:"";position:absolute;left:-10%;top:4%;width:70%;height:80%;pointer-events:none;background:radial-gradient(closest-side,rgba(175,76,240,.13),transparent 72%)}
+.author .wrap{position:relative}
+.au-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:84px;align-items:center}
+.portrait{position:relative;width:100%;max-width:600px}
+.portrait .card{padding:12px;border-radius:36px}
+.portrait .card-core{padding:0;overflow:hidden;aspect-ratio:4/5;border-radius:26px;background:#1a1250}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:42% 30%;transform:scale(1.02);transition:transform 1.6s var(--ease)}
+.portrait:hover img{transform:scale(1.05)}
+.portrait .stamp{position:absolute;right:-30px;bottom:56px;padding:20px 26px;border-radius:18px;background:var(--ink);color:#fff;box-shadow:0 28px 60px -22px rgba(18,12,56,.65)}
+.portrait .stamp b{display:block;font:400 48px/1 var(--mark);color:var(--on-navy-em);letter-spacing:.02em}
+.portrait .stamp span{font-size:13px;color:rgba(255,255,255,.75)}
+.au-copy h2{margin-top:18px;font-size:clamp(46px,6.4vw,96px);line-height:.98;letter-spacing:-.035em}
+.au-copy h2 .ln{color:var(--accent-text)}
+.roles{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:26px!important;font:600 12.5px/1.4 var(--sans)!important;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)!important}
+.roles i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.au-copy p{margin-top:22px;font-size:19.5px;line-height:1.65;max-width:34em}
 .au-copy p b{color:var(--ink);font-weight:600}
-.au-copy .ticks{border-top:0;padding-top:0;margin-top:30px}
-.au-copy .ticks li{font-size:18px}
-.quotes{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:18px;margin-top:72px}
-.q{display:flex;flex-direction:column;padding:34px 34px 28px;border-radius:var(--r);background:#fff;border:1px solid var(--hair);box-shadow:0 22px 50px -36px rgba(18,12,56,.35)}
-.q blockquote{font:500 22px/1.45 var(--display);color:var(--ink);letter-spacing:-.005em}
-.q:nth-child(2) blockquote{font-size:19px}
-.q blockquote::before{content:"\201C";display:block;font:600 64px/.6 var(--display);color:var(--accent);margin-bottom:12px}
-.q figcaption{margin-top:auto;padding-top:22px;font-size:14.5px;color:var(--muted)}
-.q figcaption b{display:block;color:var(--ink);font-weight:600;font-size:15.5px}
-
+.honors{margin-top:110px}
+.honors-k{display:flex;align-items:center;gap:18px;font:600 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.honors-k::after{content:"";flex:1;height:1px;background:var(--hair)}
+.honors-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));list-style:none;margin-top:44px}
+.honors-row li{display:flex;flex-direction:column;padding:0 28px;border-left:1px solid var(--hair)}
+.honors-row li:first-child{padding-left:0;border-left:0}
+.honors-row li:last-child{padding-right:0}
+.mark{display:flex;align-items:center;height:76px}
+.mark.t360{gap:6px}
+.mark.t360 img{height:72px;width:auto;filter:drop-shadow(0 8px 12px rgba(18,12,56,.28))}
+.mark .logo-eds{height:22px;width:auto;filter:brightness(0);opacity:.85}
+.mark .logo-edt{height:46px;width:auto}
+.mark .medal{width:58px;height:58px}
+.mark.big b{font:400 60px/1 var(--mark);color:var(--accent-text);letter-spacing:.01em}
+.honors-row h3{margin-top:22px;font:600 19px/1.28 var(--display);color:var(--ink);letter-spacing:-.01em}
+.honors-row p{margin-top:8px;font-size:14px;line-height:1.45;color:var(--muted)}
 
 /* ===== press bar (hero) ===== */
 .press{display:flex;align-items:center;justify-content:space-between;gap:20px 40px;flex-wrap:wrap;padding:26px 0 34px;border-top:1px solid var(--hair)}
@@ -237,26 +249,6 @@ section{position:relative}
 .press img{width:auto;filter:brightness(0);opacity:.62;transition:opacity .4s var(--ease)}
 .press img:hover{opacity:.9}
 .press .pk{height:40px}.press .pg2{height:44px}.press .pe{height:22px}.press .pt{height:40px}
-
-/* ===== author: recognition ===== */
-.awards{display:grid;grid-template-columns:minmax(0,1.45fr) repeat(3,minmax(0,1fr));gap:14px;margin-top:72px}
-.aw{display:flex;flex-direction:column;border-radius:var(--r);background:#fff;border:1px solid var(--hair);overflow:hidden;box-shadow:0 22px 50px -38px rgba(18,12,56,.35)}
-.aw-img{height:190px;background:#f3eef8;overflow:hidden}
-.aw-img img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
-.aw.t360 .aw-img{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;background:radial-gradient(120% 90% at 50% 0,#2a1f6b,#18143e 70%)}
-.aw.t360 .aw-img img{width:auto;height:142px;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.45))}
-.aw.txt .aw-img{display:grid;place-items:center;align-content:center;gap:2px;background:radial-gradient(120% 90% at 50% 0,#2a1f6b,#18143e 70%);color:#fff;text-align:center}
-.aw.txt .aw-img b{font:400 76px/.9 var(--mark);color:var(--on-navy-em);letter-spacing:.01em}
-.aw.txt .aw-img span{font:600 11.5px/1 var(--sans);letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.7)}
-.aw figcaption{padding:18px 20px 20px;font-size:14px;line-height:1.45;color:var(--muted)}
-.aw figcaption b{display:block;margin-bottom:4px;font:600 16.5px/1.3 var(--display);color:var(--ink);letter-spacing:-.005em}
-.q.feat{display:grid;grid-template-columns:120px minmax(0,1fr);gap:30px;align-items:center;grid-column:1 / -1;padding:36px 40px}
-.q.feat img{width:120px;height:120px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 6px #fff,0 0 0 7px var(--hair)}
-.q.feat blockquote{font-size:25px;line-height:1.4}
-.q.feat blockquote::before{display:none}
-.q.feat figcaption{padding-top:14px}
-.quotes{margin-top:18px}
-.au-grid + .awards{margin-top:72px}
 
 /* ===== stage proof ===== */
 .stage{background:#fff}
@@ -391,6 +383,9 @@ section{position:relative}
   .pages{height:470px;transform:none;width:630px;max-width:100%;margin-inline:auto}
   .wb-copy{order:-1}
   .portrait .stamp{right:-6px}
+  .author{padding:96px 0 84px}
+  .portrait{margin-inline:auto}
+  .honors{margin-top:76px}
 }
 @media (max-width:640px){
   body{font-size:16.5px}
@@ -440,8 +435,12 @@ section{position:relative}
 .cta-m{display:none;margin-top:22px}
 
 @media (max-width:900px){
-  .awards{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .aw.t360{grid-column:1 / -1}
+  .honors-row{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
+  .honors-row li{padding:0 22px}
+  .honors-row li:nth-child(odd){padding-left:0;border-left:0}
+  .honors-row li:first-child{grid-column:1 / -1;padding-right:0}
+  .honors-row li:first-child ~ li:nth-child(even){padding-left:0;border-left:0}
+  .honors-row li:first-child ~ li:nth-child(odd){padding-left:22px;border-left:1px solid var(--hair)}
   .bento{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:300px 200px}
   .bento figure:first-child{grid-row:auto;grid-column:1 / -1}
   .bento figure:nth-child(n+4){display:none}
@@ -449,19 +448,15 @@ section{position:relative}
 }
 @media (max-width:640px){
   .press{justify-content:center;padding:22px 0 26px}
+  .portrait .stamp{padding:14px 18px;bottom:30px}
+  .portrait .stamp b{font-size:36px}
+  .au-copy p{font-size:17.5px}
+  .honors-row h3{font-size:17px}
+  .mark{height:60px}
+  .mark.t360 img{height:60px}
+  .mark.big b{font-size:48px}
   .press ul{justify-content:center;gap:18px 30px}
   .press .pk{height:30px}.press .pg2{height:34px}.press .pe{height:17px}.press .pt{height:30px}
-  .awards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .aw-img{height:130px}
-  .aw figcaption{padding:12px 12px 14px;font-size:12.5px}
-  .aw figcaption b{font-size:14.5px}
-  .aw.txt .aw-img b{font-size:52px}
-  .aw.txt{grid-column:1 / -1}
-  .aw.txt .aw-img{height:110px}
-  .aw.t360 .aw-img img{height:112px}
-  .q.feat{grid-template-columns:minmax(0,1fr);gap:18px;padding:28px 22px}
-  .q.feat img{width:84px;height:84px}
-  .q.feat blockquote{font-size:20px}
   .nums div{padding:22px 6px}
   .nums b{font-size:50px}
   .nums div > span{font-size:12.5px}
@@ -680,7 +675,7 @@ section{position:relative}
 </section>
 
 <!-- 06 AUTHOR -->
-<section class="sec author">
+<section class="author">
   <div class="wrap">
     <div class="au-grid">
       <div class="portrait rv">
@@ -688,51 +683,43 @@ section{position:relative}
         <div class="stamp"><b>CIO &amp; CISO</b><span>served in both roles</span></div>
       </div>
       <div class="au-copy rv">
-                <p class="eyebrow">Your author</p>
-        <h2>Meet Saby Waraich.</h2>
-        <p>Saby has spent <b>20+ years leading digital and organizational transformations</b> across the private sector, public sector and higher education. He built CARES from real transformation leadership, not classroom theory.</p>
-        <p>One project that shaped his thinking had <b>years of missed deadlines, failed attempts and public criticism</b> behind it. Taking it on felt like standing at the open door of an airplane at 13,000 feet.</p>
-        <ul class="ticks">
-          <li><span>Served as both <b>CIO and CISO</b></span></li>
-          <li><span>Author of the international bestseller <b>SCARE to CARES</b>, foreword by Jack Canfield</span></li>
-          <li><span><b>Forbes Technology Council</b> member and Senior Fellow, Center for Digital Government</span></li>
-        </ul>
+        <p class="eyebrow">Your author</p>
+        <h2>Meet Saby<span class="ln">Waraich.</span></h2>
+        <p class="roles">Keynote Speaker <i></i> Former CIO &amp; CISO <i></i> International Bestselling Author</p>
+        <p>For more than 25 years, Saby led technology and transformation in government, higher education and global organizations. He was the leader asked to take on a modernization program that had <b>already failed multiple times</b>, with years of missed deadlines and public criticism behind it.</p>
+        <p>SCARE to CARES is what he learned carrying that pressure himself. He has since taught it on <b>500+ stages in 20+ countries</b>, and his bestselling book on it carries a <b>foreword by Jack Canfield</b>.</p>
       </div>
     </div>
-    <div class="awards">
-      <figure class="aw t360 rv">
-        <div class="aw-img"><img src="assets/proof/t360-leadership.webp" width="240" height="276" alt="Thinkers360 Elite Expert badge: Leadership"><img src="assets/proof/t360-strategy.webp" width="240" height="276" alt="Thinkers360 Elite Expert badge: Business Strategy"><img src="assets/proof/t360-pm.webp" width="240" height="276" alt="Thinkers360 Elite Expert badge: Project Management"></div>
-        <figcaption><b>Elite Expert, three categories</b>Leadership, Business Strategy and Project Management · Thinkers360</figcaption>
-      </figure>
-      <figure class="aw rv">
-        <div class="aw-img"><img src="assets/proof/edscoop50.webp" width="420" height="800" alt="EdScoop 50 Awards winner: Saby Waraich, Higher Education IT Executive" loading="lazy"></div>
-        <figcaption><b>Higher Ed IT Executive of the Year</b>EdScoop 50 Awards</figcaption>
-      </figure>
-      <figure class="aw rv">
-        <div class="aw-img"><img src="assets/proof/edtech30.webp" width="520" height="645" alt="EdTech Magazine: 30 Higher Ed IT Influencers to Follow in 2024" loading="lazy"></div>
-        <figcaption><b>30 Higher Ed IT Influencers to Follow</b>EdTech Magazine, 2024</figcaption>
-      </figure>
-      <figure class="aw txt rv">
-        <div class="aw-img"><b>Top 10</b><span>Global GovTech</span></div>
-        <figcaption><b>Global GovTech Thought Leader</b>Ranked in the top 10 worldwide</figcaption>
-      </figure>
-    </div>
-    <div class="quotes">
-      <figure class="q feat rv">
-        <img src="assets/proof/tom-cream.webp" width="200" height="200" alt="Tom Cream" loading="lazy">
-        <div>
-          <blockquote>Saby brings real executive experience, high energy, and practical tools leaders can use immediately.</blockquote>
-          <figcaption><b>Tom Cream</b>Assistant Executive Director of IT, Massachusetts State Lottery</figcaption>
-        </div>
-      </figure>
-      <figure class="q rv">
-        <blockquote>Saby emphasizes valuable human aspects of project success that often aren't included in project management training but are often the core reason for failures or delays.</blockquote>
-        <figcaption><b>John Gilmore</b></figcaption>
-      </figure>
-      <figure class="q rv">
-        <blockquote>Saby brings a lot of energy and insight, and he has a way of making complex ideas simple and actionable. He leaves people feeling more capable and motivated.</blockquote>
-        <figcaption><b>City of Seattle IT</b>Seattle Municipal Tower</figcaption>
-      </figure>
+
+    <div class="honors">
+      <p class="honors-k rv">Recognized by</p>
+      <ul class="honors-row">
+        <li class="rv">
+          <div class="mark t360"><img src="assets/proof/t360-leadership.webp" width="240" height="276" alt="Thinkers360 Elite Expert badge: Leadership" loading="lazy"><img src="assets/proof/t360-strategy.webp" width="240" height="276" alt="Thinkers360 Elite Expert badge: Business Strategy" loading="lazy"><img src="assets/proof/t360-pm.webp" width="240" height="276" alt="Thinkers360 Elite Expert badge: Project Management" loading="lazy"></div>
+          <h3>Elite Expert in Leadership, Strategy &amp; Project Management</h3>
+          <p>Thinkers360</p>
+        </li>
+        <li class="rv">
+          <div class="mark"><img class="logo-eds" src="assets/logos/edscoop.svg" alt="EdScoop" loading="lazy"></div>
+          <h3>Higher Ed IT Executive of the Year</h3>
+          <p>EdScoop 50 Awards</p>
+        </li>
+        <li class="rv">
+          <div class="mark"><img class="logo-edt" src="assets/logos/edtech.webp" alt="EdTech Magazine" loading="lazy"></div>
+          <h3>30 Higher Ed IT Influencers to Follow</h3>
+          <p>EdTech Magazine, 2024</p>
+        </li>
+        <li class="rv">
+          <div class="mark big"><b>Top 10</b></div>
+          <h3>Global GovTech Thought Leader</h3>
+          <p>Senior Fellow, Center for Digital Government</p>
+        </li>
+        <li class="rv">
+          <div class="mark"><svg class="medal" viewBox="0 0 48 48" fill="none" stroke="#8E2FD6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="19" r="12"/><circle cx="24" cy="19" r="6.5"/><path d="M16.5 28.5 13 43l11-5 11 5-3.5-14.5"/></svg></div>
+          <h3>Forbes Technology Council</h3>
+          <p>Member</p>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
