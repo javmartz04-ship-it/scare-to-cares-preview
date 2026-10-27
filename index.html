@@ -229,6 +229,76 @@ section{position:relative}
 .q figcaption{margin-top:auto;padding-top:22px;font-size:14.5px;color:var(--muted)}
 .q figcaption b{display:block;color:var(--ink);font-weight:600;font-size:15.5px}
 
+
+/* ===== press bar (hero) ===== */
+.press{display:flex;align-items:center;justify-content:space-between;gap:20px 40px;flex-wrap:wrap;padding:26px 0 34px;border-top:1px solid var(--hair)}
+.press p{font:600 11.5px/1 var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.press ul{display:flex;align-items:center;justify-content:space-between;flex:1;gap:22px 48px;flex-wrap:wrap;list-style:none}
+.press img{width:auto;filter:brightness(0);opacity:.62;transition:opacity .4s var(--ease)}
+.press img:hover{opacity:.9}
+.press .pk{height:40px}.press .pg2{height:44px}.press .pe{height:22px}.press .pt{height:40px}
+
+/* ===== author: recognition ===== */
+.awards{display:grid;grid-template-columns:minmax(0,1.45fr) repeat(3,minmax(0,1fr));gap:14px;margin-top:72px}
+.aw{display:flex;flex-direction:column;border-radius:var(--r);background:#fff;border:1px solid var(--hair);overflow:hidden;box-shadow:0 22px 50px -38px rgba(18,12,56,.35)}
+.aw-img{height:190px;background:#f3eef8;overflow:hidden}
+.aw-img img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.aw.t360 .aw-img{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;background:radial-gradient(120% 90% at 50% 0,#2a1f6b,#18143e 70%)}
+.aw.t360 .aw-img img{width:auto;height:142px;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.45))}
+.aw.txt .aw-img{display:grid;place-items:center;align-content:center;gap:2px;background:radial-gradient(120% 90% at 50% 0,#2a1f6b,#18143e 70%);color:#fff;text-align:center}
+.aw.txt .aw-img b{font:400 76px/.9 var(--mark);color:var(--on-navy-em);letter-spacing:.01em}
+.aw.txt .aw-img span{font:600 11.5px/1 var(--sans);letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.aw figcaption{padding:18px 20px 20px;font-size:14px;line-height:1.45;color:var(--muted)}
+.aw figcaption b{display:block;margin-bottom:4px;font:600 16.5px/1.3 var(--display);color:var(--ink);letter-spacing:-.005em}
+.q.feat{display:grid;grid-template-columns:120px minmax(0,1fr);gap:30px;align-items:center;grid-column:1 / -1;padding:36px 40px}
+.q.feat img{width:120px;height:120px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 6px #fff,0 0 0 7px var(--hair)}
+.q.feat blockquote{font-size:25px;line-height:1.4}
+.q.feat blockquote::before{display:none}
+.q.feat figcaption{padding-top:14px}
+.quotes{margin-top:18px}
+.au-grid + .awards{margin-top:72px}
+
+/* ===== stage proof ===== */
+.stage{background:#fff}
+.stage .h2 .em{display:block}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:52px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.nums div{padding:30px 28px 32px;border-left:1px solid var(--hair);text-align:center}
+.nums div:first-child{border-left:0}
+.nums b{display:block;font:400 84px/.9 var(--mark);color:var(--ink);letter-spacing:.01em}
+.nums b i{font-style:normal;color:var(--accent-text)}
+.nums div > span{display:block;margin-top:10px;font-size:15.5px;line-height:1.45;color:var(--muted)}
+.nums b span{font:inherit;color:inherit}
+.bento{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);grid-template-rows:260px 260px;gap:14px;margin-top:48px}
+.bento figure{position:relative;border-radius:var(--r);overflow:hidden;background:var(--navy)}
+.bento figure:first-child{grid-row:1 / 3}
+.bento img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.bento figure:hover img{transform:scale(1.035)}
+.bento figcaption{position:absolute;left:14px;bottom:14px;padding:8px 14px;border-radius:var(--r-pill);background:rgba(18,12,56,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:600 13px/1 var(--sans);color:#fff}
+.katu{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:center;margin-top:72px}
+.tv{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 44px 96px -46px rgba(18,12,56,.6)}
+.tv img,.tv iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.tv button{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border:0;cursor:pointer;background:linear-gradient(180deg,rgba(11,8,36,0),rgba(11,8,36,.45));color:#fff;font:600 15px/1 var(--sans)}
+.tv .disc{display:grid;place-items:center;width:80px;height:80px;border-radius:50%;background:linear-gradient(100deg,#b65af2,#8e2fd6);box-shadow:0 18px 40px -10px rgba(175,76,240,.7);transition:transform .5s var(--ease)}
+.tv button:hover .disc{transform:scale(1.07)}
+.tv .lab{padding:8px 16px;border-radius:var(--r-pill);background:rgba(11,8,36,.55);backdrop-filter:blur(6px)}
+.tv .chip{position:absolute;top:14px;left:14px;z-index:2;padding:8px 14px;border-radius:var(--r-pill);background:rgba(255,255,255,.94);font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);pointer-events:none}
+.tv.on button,.tv.on .chip,.tv.on img{display:none}
+.katu-copy img{height:46px;width:auto;filter:brightness(0);opacity:.75}
+.katu-copy h3{margin-top:18px;font:600 clamp(26px,2.6vw,36px)/1.12 var(--display);letter-spacing:-.02em;color:var(--ink)}
+.katu-copy p{margin-top:14px;font-size:17px}
+.katu-copy ul{list-style:none;margin-top:18px;display:grid;gap:8px;font-size:15px;color:var(--muted)}
+.katu-copy li{display:flex;gap:10px;align-items:baseline}
+.katu-copy li::before{content:"";flex:none;width:6px;height:6px;border-radius:2px;background:var(--accent);transform:translateY(-2px)}
+.spoke{margin-top:80px;text-align:center}
+.spoke p{font:600 11.5px/1 var(--sans);letter-spacing:.17em;text-transform:uppercase;color:var(--faint)}
+.marq{position:relative;margin-top:26px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marq ul{display:flex;align-items:center;gap:64px;width:max-content;list-style:none;animation:marq 48s linear infinite}
+.marq:hover ul{animation-play-state:paused}
+.marq img{height:44px;width:auto;max-width:180px;object-fit:contain;filter:grayscale(1) contrast(1.1);opacity:.62;transition:filter .4s var(--ease),opacity .4s var(--ease)}
+.marq img:hover{filter:none;opacity:1}
+.marq img.sq{height:58px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
 /* ============ 07 PRICE ============ */
 .price{background:#fff}
 .price-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center;margin-top:52px}
@@ -368,6 +438,38 @@ section{position:relative}
   .foot p{text-align:center}
 }
 .cta-m{display:none;margin-top:22px}
+
+@media (max-width:900px){
+  .awards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .aw.t360{grid-column:1 / -1}
+  .bento{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:300px 200px}
+  .bento figure:first-child{grid-row:auto;grid-column:1 / -1}
+  .bento figure:nth-child(n+4){display:none}
+  .katu{grid-template-columns:minmax(0,1fr);gap:28px}
+}
+@media (max-width:640px){
+  .press{justify-content:center;padding:22px 0 26px}
+  .press ul{justify-content:center;gap:18px 30px}
+  .press .pk{height:30px}.press .pg2{height:34px}.press .pe{height:17px}.press .pt{height:30px}
+  .awards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .aw-img{height:130px}
+  .aw figcaption{padding:12px 12px 14px;font-size:12.5px}
+  .aw figcaption b{font-size:14.5px}
+  .aw.txt .aw-img b{font-size:52px}
+  .aw.txt{grid-column:1 / -1}
+  .aw.txt .aw-img{height:110px}
+  .aw.t360 .aw-img img{height:112px}
+  .q.feat{grid-template-columns:minmax(0,1fr);gap:18px;padding:28px 22px}
+  .q.feat img{width:84px;height:84px}
+  .q.feat blockquote{font-size:20px}
+  .nums div{padding:22px 6px}
+  .nums b{font-size:50px}
+  .nums div > span{font-size:12.5px}
+  .bento{grid-template-rows:230px 150px;gap:10px}
+  .marq img{height:34px}.marq img.sq{height:46px}
+  .marq ul{gap:44px}
+}
+@media (prefers-reduced-motion:reduce){.marq ul{animation:none;flex-wrap:wrap;justify-content:center;width:auto}}
 .pages-hint{display:none;margin-top:4px;font-size:13.5px;color:var(--muted);text-align:center}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition-duration:.01ms!important;animation:none!important;transition-delay:0s!important}
@@ -422,6 +524,15 @@ section{position:relative}
       <div><b>CIO &amp; CISO</b><span>across private sector, public sector and higher ed</span></div>
       <div><b>50,000+ people</b><span>reached as a speaker</span></div>
       <div><b>20+ countries</b><span>on five continents</span></div>
+    </div>
+    <div class="press rv">
+      <p>As seen on</p>
+      <ul>
+        <li><img class="pk" src="assets/logos/katu.svg" alt="KATU" height="40"></li>
+        <li><img class="pg2" src="assets/logos/govtech-rev.svg" alt="Government Technology" height="44"></li>
+        <li><img class="pe" src="assets/logos/edscoop.svg" alt="EdScoop" height="22"></li>
+        <li><img class="pt" src="assets/logos/edtech.webp" alt="EdTech: Focus on Higher Education" height="40"></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -573,7 +684,7 @@ section{position:relative}
   <div class="wrap">
     <div class="au-grid">
       <div class="portrait rv">
-        <div class="card"><div class="card-core"><img src="assets/saby.webp" width="435" height="493" alt="Saby Waraich speaking on stage" loading="lazy"></div></div>
+        <div class="card"><div class="card-core"><img src="assets/saby.webp" width="1000" height="1000" alt="Saby Waraich speaking on stage" loading="lazy"></div></div>
         <div class="stamp"><b>CIO &amp; CISO</b><span>served in both roles</span></div>
       </div>
       <div class="au-copy rv">
@@ -583,12 +694,37 @@ section{position:relative}
         <p>One project that shaped his thinking had <b>years of missed deadlines, failed attempts and public criticism</b> behind it. Taking it on felt like standing at the open door of an airplane at 13,000 feet.</p>
         <ul class="ticks">
           <li><span>Served as both <b>CIO and CISO</b></span></li>
-          <li><span>Reached <b>50,000+ people</b> as a speaker</span></li>
-          <li><span>Spoken in <b>20+ countries</b> on five continents</span></li>
+          <li><span>Author of the international bestseller <b>SCARE to CARES</b>, foreword by Jack Canfield</span></li>
+          <li><span><b>Forbes Technology Council</b> member and Senior Fellow, Center for Digital Government</span></li>
         </ul>
       </div>
     </div>
+    <div class="awards">
+      <figure class="aw t360 rv">
+        <div class="aw-img"><img src="assets/proof/t360-leadership.webp" width="240" height="276" alt="Thinkers360 Elite Expert badge: Leadership"><img src="assets/proof/t360-strategy.webp" width="240" height="276" alt="Thinkers360 Elite Expert badge: Business Strategy"><img src="assets/proof/t360-pm.webp" width="240" height="276" alt="Thinkers360 Elite Expert badge: Project Management"></div>
+        <figcaption><b>Elite Expert, three categories</b>Leadership, Business Strategy and Project Management · Thinkers360</figcaption>
+      </figure>
+      <figure class="aw rv">
+        <div class="aw-img"><img src="assets/proof/edscoop50.webp" width="420" height="800" alt="EdScoop 50 Awards winner: Saby Waraich, Higher Education IT Executive" loading="lazy"></div>
+        <figcaption><b>Higher Ed IT Executive of the Year</b>EdScoop 50 Awards</figcaption>
+      </figure>
+      <figure class="aw rv">
+        <div class="aw-img"><img src="assets/proof/edtech30.webp" width="520" height="645" alt="EdTech Magazine: 30 Higher Ed IT Influencers to Follow in 2024" loading="lazy"></div>
+        <figcaption><b>30 Higher Ed IT Influencers to Follow</b>EdTech Magazine, 2024</figcaption>
+      </figure>
+      <figure class="aw txt rv">
+        <div class="aw-img"><b>Top 10</b><span>Global GovTech</span></div>
+        <figcaption><b>Global GovTech Thought Leader</b>Ranked in the top 10 worldwide</figcaption>
+      </figure>
+    </div>
     <div class="quotes">
+      <figure class="q feat rv">
+        <img src="assets/proof/tom-cream.webp" width="200" height="200" alt="Tom Cream" loading="lazy">
+        <div>
+          <blockquote>Saby brings real executive experience, high energy, and practical tools leaders can use immediately.</blockquote>
+          <figcaption><b>Tom Cream</b>Assistant Executive Director of IT, Massachusetts State Lottery</figcaption>
+        </div>
+      </figure>
       <figure class="q rv">
         <blockquote>Saby emphasizes valuable human aspects of project success that often aren't included in project management training but are often the core reason for failures or delays.</blockquote>
         <figcaption><b>John Gilmore</b></figcaption>
@@ -597,6 +733,47 @@ section{position:relative}
         <blockquote>Saby brings a lot of energy and insight, and he has a way of making complex ideas simple and actionable. He leaves people feeling more capable and motivated.</blockquote>
         <figcaption><b>City of Seattle IT</b>Seattle Municipal Tower</figcaption>
       </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 06b STAGE PROOF -->
+<section class="sec stage">
+  <div class="wrap">
+    <div class="center rv">
+      <h2 class="h2">500+ stages. 20+ countries.<span class="em">The same framework that's in this book.</span></h2>
+      <p class="sub">Saby teaches SCARE to CARES in keynotes and workshops for CIOs, project leaders and public-sector teams. The book and workbook put it on your desk.</p>
+    </div>
+    <div class="nums rv">
+      <div><b><span data-count="500">500</span><i>+</i></b><span>events across five continents</span></div>
+      <div><b><span data-count="99">99</span><i>%</i></b><span>of 4,120 attendees found the session valuable</span></div>
+      <div><b><span data-count="97">97</span><i>%</i></b><span>of attendees want to see him speak again</span></div>
+    </div>
+    <div class="bento rv">
+      <figure><img src="assets/proof/stage-tx.webp" width="1600" height="1067" alt="Saby Waraich on stage at the Texas IT Leadership Forum" loading="lazy"><figcaption>IT Leadership Forum, Texas</figcaption></figure>
+      <figure><img src="assets/proof/crowd-selfie.webp" width="1200" height="800" alt="Saby Waraich taking a selfie with a ballroom audience" loading="lazy"></figure>
+      <figure><img src="assets/proof/stage-wide.webp" width="1200" height="674" alt="Saby Waraich delivering a keynote in a large conference hall" loading="lazy"></figure>
+    </div>
+    <div class="katu">
+      <div class="tv rv" id="tv">
+        <img src="assets/proof/katu-book.webp" width="1280" height="720" alt="Saby Waraich interviewed on KATU about SCARE to CARES" loading="lazy">
+        <span class="chip">As seen on KATU</span>
+        <button type="button" aria-label="Play Saby's KATU interview about SCARE to CARES"><span class="disc"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></span><span class="lab">Watch the interview</span></button>
+      </div>
+      <div class="katu-copy rv">
+        <img src="assets/logos/katu.svg" alt="KATU" height="46">
+        <h3>On TV talking about SCARE to CARES.</h3>
+        <p>Saby is a regular guest on Portland's KATU, where he has talked about the book, why people resist change, and how to handle it.</p>
+        <ul>
+          <li>"SCARE to CARES: Leading Digital Transformation without Chaos"</li>
+          <li>The real reason you're resistant to change</li>
+          <li>Tips to handle change</li>
+        </ul>
+      </div>
+    </div>
+    <div class="spoke rv">
+      <p>Saby has spoken for</p>
+      <div class="marq"><ul><li><img src="assets/logos/sim.webp" alt="SIM: Society for Information Management" loading="lazy"></li><li><img src="assets/logos/isaca.webp" alt="ISACA" loading="lazy"></li><li><img src="assets/logos/pmi-uk.webp" alt="Project Management Institute United Kingdom" loading="lazy"></li><li><img src="assets/logos/iiba.webp" alt="IIBA" loading="lazy"></li><li><img src="assets/logos/govtech-mag.webp" alt="Government Technology" loading="lazy"></li><li><img src="assets/logos/university-of-portland.webp" alt="University of Portland" loading="lazy"></li><li><img src="assets/logos/port-of-portland.webp" alt="Port of Portland" loading="lazy"></li><li><img src="assets/logos/saif.webp" alt="SAIF Corporation" loading="lazy"></li><li><img class=sq src="assets/logos/multnomah-county.webp" alt="Multnomah County" loading="lazy"></li><li><img src="assets/logos/pmi-ecuador.webp" alt="Project Management Institute Ecuador" loading="lazy"></li><li><img class=sq src="assets/logos/oregon-das.webp" alt="Oregon Department of Administrative Services" loading="lazy"></li><li><img class=sq src="assets/logos/oregon-pers.webp" alt="Oregon PERS" loading="lazy"></li><li><img src="assets/logos/npi.webp" alt="NPI: Leading Excellence in Public Procurement" loading="lazy"></li><li><img src="assets/logos/oagitm.webp" alt="Oregon Association of Government Information Technology Management" loading="lazy"></li><li><img src="assets/logos/aappspa.webp" alt="AAPPSPA" loading="lazy"></li><li><img src="assets/logos/brmconnect.webp" alt="BRMConnect" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/sim.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/isaca.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/pmi-uk.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/iiba.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/govtech-mag.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/university-of-portland.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/port-of-portland.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/saif.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img class=sq src="assets/logos/multnomah-county.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/pmi-ecuador.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img class=sq src="assets/logos/oregon-das.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img class=sq src="assets/logos/oregon-pers.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/npi.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/oagitm.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/aappspa.webp" alt="" loading="lazy"></li><li aria-hidden="true"><img src="assets/logos/brmconnect.webp" alt="" loading="lazy"></li></ul></div>
     </div>
   </div>
 </section>
@@ -722,6 +899,26 @@ section{position:relative}
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .14, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.rv,.more,.pages').forEach(el => io.observe(el));
   requestAnimationFrame(() => document.querySelectorAll('.hero .rv').forEach(el => el.classList.add('in')));
+
+
+  // Count-up on the stage numbers.
+  const cio = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; cio.unobserve(e.target);
+    const el = e.target, to = +el.dataset.count, t0 = performance.now(), d = 1400;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const tick = t => { const k = Math.min(1, (t - t0) / d); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
+    el.textContent = '0'; requestAnimationFrame(tick);
+  }), { threshold: .6 });
+  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+  // KATU interview: plays in place, no trip to YouTube.
+  const tv = document.getElementById('tv');
+  tv.querySelector('button').addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/5L9CZGuoGus?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    f.title = 'Saby Waraich on KATU: SCARE to CARES'; f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true;
+    tv.appendChild(f); tv.classList.add('on');
+  });
 
   // SCARE / CARES flip: auto-flips once when the cards come into view, then it's the reader's control.
   const method = document.querySelector('.method'), seg = method.querySelector('.seg');
